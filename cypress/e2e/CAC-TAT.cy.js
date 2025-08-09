@@ -64,9 +64,25 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('.error').should('be.visible')
   })
 
-  // Lição 02 - Exercício Extra 07 - Comandos customizados
+  // Lição 02 - Exercício Extra 07 - Comandos customizados sem argumentos
   it('enviar o formulário com sucesso usando um comando customizado', () => { 
-  
+    cy.fillMandatoryFieldsAndSubmit()
+  })
+
+  // Lição 02 - Exercício Extra 07 - Comandos customizados com argumentos
+  it('enviar o formulário com sucesso usando um comando customizado com argumentos', () => {
+    cy.fillMandatoryFieldsAndSubmitWithArguments('João', 'Silva', 'joao.silva@email.com', 'Olá, gostaria de mais informações sobre o produto.')
+  })
+
+  // Lição 02 - Exercício Extra 07 - Comandos customizados com objeto como argumento
+  it('enviar o formulário com sucesso usando um comando customizado com objeto como argumento', () => {
+    const userData = {
+      firstName: 'João',
+      lastName: 'Silva',
+      email: 'joao.silva@email.com',
+      message: 'Olá, gostaria de mais informações sobre o produto.'
+    }
+    cy.fillMandatoryFieldsAndSubmitWithObjectAsArgument(userData)
   })
 
 })
