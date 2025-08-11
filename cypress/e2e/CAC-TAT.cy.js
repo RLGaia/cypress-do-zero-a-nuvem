@@ -23,7 +23,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   // Lição 02 - Exercício Extra 01 - Testando o comando .type() com delay
   it('testando o .type() com delay 0', () => {
-    cy.get('#open-text-area').type('lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', { delay: 0 })
+    const longText = Cypress._.repeat('lorem test ', 20)
+
+    cy.get('#open-text-area').type(longText, { delay: 0 })
   })
 
   // Lição 02 - Exercício Extra 02 - Email com formatação inválida
