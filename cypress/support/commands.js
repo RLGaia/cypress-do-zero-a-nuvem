@@ -25,6 +25,14 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // Comando que não recebe nenhum argumento
+
+Cypress.Commands.add('fillMandatoryFields', () => {
+  cy.get('#firstName').type('João')
+  cy.get('#lastName').type('Silva')
+  cy.get('#email').type('joao.silva@email.com')
+  cy.get('#open-text-area').type('Olá, gostaria de mais informações sobre o produto.')
+})
+
 Cypress.Commands.add('fillMandatoryFieldsAndSubmit', () => {
   cy.get('#firstName').type('João')
   cy.get('#lastName').type('Silva')

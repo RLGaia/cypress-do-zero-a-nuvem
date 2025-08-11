@@ -85,4 +85,10 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.fillMandatoryFieldsAndSubmitWithObjectAsArgument(userData)
   })
 
+  // Lição 02 - Exercício Extra 08 - Utilizando cy.contains()
+  it('preencher o formulário com sucesso usando cy.contains()', () => {
+    cy.fillMandatoryFields()
+    cy.contains('button', 'Enviar').click()
+  })
+
 })
