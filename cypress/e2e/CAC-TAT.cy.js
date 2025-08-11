@@ -1,9 +1,10 @@
-beforeEach(() => {
+// cypress/e2e/CAC-TAT.cy.js
+describe('Central de Atendimento ao Cliente TAT', () => {
+  
+  beforeEach(() => {
   cy.visit('./src/index.html')
 })
 
-describe('Central de Atendimento ao Cliente TAT', () => {
-  
   // Lição 01 - Exercício
   it('verifica o título da aplicação', () => {
     cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
