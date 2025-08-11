@@ -17,6 +17,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#email').type('joao.silva@example.com')
     cy.get('#open-text-area').type('Olá, gostaria de mais informações sobre o produto.')
     cy.get('button[type="submit"]').click()
+
     cy.get('.success').should('be.visible')
   })
 
@@ -32,6 +33,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#email').type('joao.silva@invalid-email')
     cy.get('#open-text-area').type('Olá, gostaria de mais informações sobre o produto.')
     cy.get('button[type="submit"]').click()
+
     cy.get('.error').should('be.visible')
   })
 
@@ -48,6 +50,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#phone-checkbox').check() // .click() também funciona
     cy.get('#open-text-area').type('Olá, gostaria de mais informações sobre o produto.')
     cy.get('button[type="submit"]').click()
+
     cy.get('.error').should('be.visible')
   })
 
@@ -56,26 +59,32 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#firstName').type('João').should('have.value', 'João').clear().should('have.value', '')
     cy.get('#lastName').type('Silva').should('have.value', 'Silva').clear().should('have.value', '')
     cy.get('#email').type('joao.silva@email.com').should('have.value', 'joao.silva@email.com').clear().should('have.value', '')
+    
     cy.get('#phone').type('123456789').should('have.value', '123456789').clear().should('have.value', '')
   })
 
   // Lição 02 - Exercício Extra 06 - Validando mensagem de erro ao enviar formulário sem preencher os campos obrigatórios
   it('exibe mensagem de erro ao enviar o formulário sem preencher os campos obrigatórios', () => {
     cy.get('button[type="submit"]').click()
+    
     cy.get('.error').should('be.visible')
   })
 
-  // Lição 02 - Exercício Extra 07 - Comandos customizados sem argumentos
+  // Lição 02 - Exercício Extra 07.1 - Comandos customizados sem argumentos
   it('enviar o formulário com sucesso usando um comando customizado', () => { 
     cy.fillMandatoryFieldsAndSubmit()
+  
+    cy.get('.success').should('be.visible')
   })
 
-  // Lição 02 - Exercício Extra 07 - Comandos customizados com argumentos
+  // Lição 02 - Exercício Extra 07.2 - Comandos customizados com argumentos
   it('enviar o formulário com sucesso usando um comando customizado com argumentos', () => {
     cy.fillMandatoryFieldsAndSubmitWithArguments('João', 'Silva', 'joao.silva@email.com', 'Olá, gostaria de mais informações sobre o produto.')
+  
+    cy.get('.success').should('be.visible')
   })
 
-  // Lição 02 - Exercício Extra 07 - Comandos customizados com objeto como argumento
+  // Lição 02 - Exercício Extra 07.3 - Comandos customizados com objeto como argumento
   it('enviar o formulário com sucesso usando um comando customizado com objeto como argumento', () => {
     const userData = {
       firstName: 'João',
@@ -84,12 +93,16 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       message: 'Olá, gostaria de mais informações sobre o produto.'
     }
     cy.fillMandatoryFieldsAndSubmitWithObjectAsArgument(userData)
+
+    cy.get('.success').should('be.visible')
   })
 
   // Lição 02 - Exercício Extra 08 - Utilizando cy.contains()
   it('preencher o formulário com sucesso usando cy.contains()', () => {
     cy.fillMandatoryFields()
     cy.contains('button', 'Enviar').click()
+
+    cy.get('.success').should('be.visible')
   })
 
 })
