@@ -24,8 +24,14 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   // Lição 02 - Exercício Extra 01 - Testando o comando .type() com delay
   it('testando o .type() com delay 0', () => {
     const longText = Cypress._.repeat('lorem test ', 20)
-
+    
+    cy.get('#firstName').type('João')
+    cy.get('#lastName').type('Silva')
+    cy.get('#email').type('joao.silva@example.com')
     cy.get('#open-text-area').type(longText, { delay: 0 })
+    cy.get('button[type="submit"]').click()
+
+    cy.get('.success').should('be.visible')
   })
 
   // Lição 02 - Exercício Extra 02 - Email com formatação inválida
