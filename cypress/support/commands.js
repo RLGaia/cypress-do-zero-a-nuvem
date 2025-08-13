@@ -58,3 +58,16 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithObjectAsArgument', (userDa
   cy.get('#open-text-area').type(userData.message)
   cy.get('button[type="submit"]').click()
 })
+
+Cypress.Commands.add('fillMandatoryFieldsAndSubmitWithObjectAsArgumentAndDataDefault', (userData = {
+  firstName: 'Ana',
+  lastName: 'Silva',
+  email: 'ana.silva@email.com',
+  message: 'Olá, gostaria de mais informações sobre o produto.'
+}) => {
+  cy.get('#firstName').type(userData.firstName)
+  cy.get('#lastName').type(userData.lastName)
+  cy.get('#email').type(userData.email)
+  cy.get('#open-text-area').type(userData.message)
+  cy.get('button[type="submit"]').click()
+})

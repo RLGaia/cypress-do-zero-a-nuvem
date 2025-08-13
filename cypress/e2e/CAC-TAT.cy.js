@@ -105,6 +105,26 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('.success').should('be.visible')
   })
 
+  // Lição 02 - Exercício Extra 07.4 - Comandos customizados com objeto como argumento e dados padrão
+  it('enviar o formulário com sucesso usando um comando customizado com objeto como argumento e dados padrão', () => {
+    cy.fillMandatoryFieldsAndSubmitWithObjectAsArgumentAndDataDefault()
+
+    cy.get('.success').should('be.visible')
+  })
+
+  // Lição 02 - Exercício Extra 07.5 - Comandos customizados com objeto como argumento e dados padrão, passando novos dados ao chamar o comando
+  it.only('enviar o formulário com sucesso usando um comando customizado com objeto como argumento e dados padrão, passando novos dados ao chamar o comando', () => {
+    const userData = {
+      firstName: 'João',
+      lastName: 'Silva',
+      email: 'joao.silva@email.com',
+      message: 'Olá, gostaria de mais informações sobre o produto.'
+    }
+    cy.fillMandatoryFieldsAndSubmitWithObjectAsArgumentAndDataDefault(userData)
+
+    cy.get('.success').should('be.visible')
+  })
+
   // Lição 02 - Exercício Extra 08 - Utilizando cy.contains()
   it('preencher o formulário com sucesso usando cy.contains()', () => {
     cy.fillMandatoryFields()
