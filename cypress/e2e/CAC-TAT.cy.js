@@ -113,7 +113,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   // Lição 02 - Exercício Extra 07.5 - Comandos customizados com objeto como argumento e dados padrão, passando novos dados ao chamar o comando
-  it.only('enviar o formulário com sucesso usando um comando customizado com objeto como argumento e dados padrão, passando novos dados ao chamar o comando', () => {
+  it('enviar o formulário com sucesso usando um comando customizado com objeto como argumento e dados padrão, passando novos dados ao chamar o comando', () => {
     const userData = {
       firstName: 'João',
       lastName: 'Silva',
@@ -131,6 +131,21 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.contains('button', 'Enviar').click()
 
     cy.get('.success').should('be.visible')
+  })
+
+  // Lição 03 - Exercício - Selecionar um produto (YouTube) por seu texto
+  it('selecionar um produto (YouTube) por seu texto', () => { 
+    cy.get('select').select('YouTube').should('have.value', 'youtube')
+  })
+
+  // Lição 03 - Exercício Extra 01 - Selecionar um produto (Mentoria) por seu valor (value)
+  it('seleciona um produto (Mentoria) por seu valor (value)', () => {
+    cy.get('select').select('mentoria').should('have.value', 'mentoria')
+  })
+
+  // Lição 03 - Exercício Extra 02 - Selecionar um produto (Blog) por seu índice
+  it.only('seleciona um produto (Blog) por seu índice', () => {
+    cy.get('select').select(1).should('have.value', 'blog')
   })
 
 })
