@@ -144,8 +144,28 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   // Lição 03 - Exercício Extra 02 - Selecionar um produto (Blog) por seu índice
-  it.only('seleciona um produto (Blog) por seu índice', () => {
+  it('seleciona um produto (Blog) por seu índice', () => {
     cy.get('select').select(1).should('have.value', 'blog')
+  })
+
+  // Lição 04 - Exercício - Marcar o tipo de atendimento "Feedback"
+  it('marca o tipo de atendimento "Feedback"', () => {
+    cy.get('input[type="radio"]').check('feedback').should('be.checked')
+  })
+
+  // Lição 04 - Exercício Extra 01 - Marcar cada tipo de atendimento
+  it.only('marca cada tipo de atendimento', () => {
+    const tiposDeAtendimento = ['ajuda', 'elogio', 'feedback']
+    // cy.get('[type="radio"]').check(tiposDeAtendimento).should('be.checked') //provável falso positivo
+    
+    cy.get('[type="radio"][value="ajuda"]').check().should('be.checked')
+    cy.get('[type="radio"][value="elogio"]').check().should('be.checked')
+    cy.get('[type="radio"][value="feedback"]').check().should('be.checked')
+  })
+
+  // Lição 04 - Exercício Extra 01.1 - Marcar cada tipo de atendimento usando .wrap() e .each()
+  it.only('marca cada tipo de atendimento usando .wrap() e .each()', () => {
+    
   })
 
 })
