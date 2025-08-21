@@ -154,7 +154,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   // Lição 04 - Exercício Extra 01 - Marcar cada tipo de atendimento
-  it.only('marca cada tipo de atendimento', () => {
+  it('marca cada tipo de atendimento', () => {
     const tiposDeAtendimento = ['ajuda', 'elogio', 'feedback']
     // cy.get('[type="radio"]').check(tiposDeAtendimento).should('be.checked') //provável falso positivo
     
@@ -165,7 +165,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   // Lição 04 - Exercício Extra 01.1 - Marcar cada tipo de atendimento usando .wrap() e .each()
   it.only('marca cada tipo de atendimento usando .wrap() e .each()', () => {
-    
+    cy.get('[type="radio"]').each(radio => {
+      cy.wrap(radio).check().should('be.checked')
+    })
   })
 
 })
