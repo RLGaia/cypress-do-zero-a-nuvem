@@ -55,7 +55,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#firstName').type('João')
     cy.get('#lastName').type('Silva')
     cy.get('#email').type('joao.silva@email.com')
-    cy.get('#phone-checkbox').check() // .click() também funciona
+    cy.get('#phone-checkbox').check()
     cy.get('#open-text-area').type('Olá, gostaria de mais informações sobre o produto.')
     cy.get('button[type="submit"]').click()
 
@@ -164,10 +164,20 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   // Lição 04 - Exercício Extra 01.1 - Marcar cada tipo de atendimento usando .wrap() e .each()
-  it.only('marca cada tipo de atendimento usando .wrap() e .each()', () => {
+  it('marca cada tipo de atendimento usando .wrap() e .each()', () => {
     cy.get('[type="radio"]').each(radio => {
       cy.wrap(radio).check().should('be.checked')
     })
+  })
+
+  // Lição 05 - Exercício - Marcar ambos checkboxes e depois desmarcar o último
+  it.only('marcar ambos checkboxes, depois desmarca o último', () => {
+    cy.get('[type="checkbox"]')
+      .check()
+      .should('be.checked')
+      .last()
+      .uncheck()
+      .should('not.be.checked')
   })
 
 })
