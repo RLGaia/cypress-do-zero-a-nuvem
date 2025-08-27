@@ -171,13 +171,24 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   // Lição 05 - Exercício - Marcar ambos checkboxes e depois desmarcar o último
-  it.only('marcar ambos checkboxes, depois desmarca o último', () => {
+  it('marcar ambos checkboxes, depois desmarca o último', () => {
     cy.get('[type="checkbox"]')
       .check()
       .should('be.checked')
       .last()
       .uncheck()
       .should('not.be.checked')
+  })
+
+  // Lição 06 - Exercício - Selecionar um arquivo da pasta fixtures
+  it.only('seleciona um arquivo da pasta fixtures', () => {
+    cy.get('#file-upload')
+      .selectFile('cypress/fixtures/example.json')
+      .then($upload => {
+        const files = $upload[0].files;
+        expect(files).to.have.length(1);
+        expect(files[0].name).to.equal('example.json')
+      })
   })
 
 })
